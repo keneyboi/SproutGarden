@@ -1,0 +1,332 @@
+﻿@page "/"
+
+<PageTitle>Sprout — See your money the moment it starts to wilt.</PageTitle>
+
+<div class="sprout-landing">
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="container nav-inner">
+            <div class="brand">
+                <span class="brand-sprout">🌱</span>
+                <span class="brand-name">Sprout</span>
+            </div>
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#preview">Preview</a>
+                <a href="#steps">How it works</a>
+            </nav>
+            <div class="nav-cta">
+                <NavLink href="sign-in" class="btn-text">Sign in</NavLink>
+                <NavLink href="sign-up" class="btn btn-primary">Get started free</NavLink>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>
+                        See your money <span class="highlight">the moment it starts to wilt.</span>
+                    </h1>
+                    <p class="hero-subtext">
+                        Every category in your budget grows as a living plant — full and thriving when you're on track, 
+                        drooping the second you're not. Sprout turns a month of transactions into something you actually 
+                        watch happen, instead of a table you avoid opening.
+                    </p>
+                    <div class="hero-actions">
+                        <NavLink href="sign-up" class="btn btn-primary btn-large">Start your garden</NavLink>
+                        <NavLink href="sign-in" class="btn btn-outline btn-large">Sign in</NavLink>
+                    </div>
+                    <p class="hero-badges">
+                        <span>Living plants</span> &middot;
+                        <span>Goal trees</span> &middot;
+                        <span>Weather forecast</span> &middot;
+                        <span>AI garden advisor</span>
+                    </p>
+                </div>
+
+                <!-- Interactive App Window Mockup -->
+                <div class="browser-mockup">
+                    <div class="browser-header">
+                        <div class="window-dots">
+                            <span class="dot dot-red"></span>
+                            <span class="dot dot-yellow"></span>
+                            <span class="dot dot-green"></span>
+                        </div>
+                        <div class="address-bar">sprout.app/garden</div>
+                    </div>
+                    <div class="mockup-body">
+                        <!-- Weather Alert -->
+                        <div class="weather-card">
+                            <div class="weather-icon">☀️</div>
+                            <div>
+                                <p class="weather-title">Sunny — Garden is healthy</p>
+                                <p class="weather-sub">You're on track. Keep it up.</p>
+                            </div>
+                        </div>
+
+                        <!-- Budget Stats -->
+                        <div class="stats-row">
+                            <div class="stat-box">
+                                <span class="stat-title">Budgeted</span>
+                                <strong class="stat-num">$2,400</strong>
+                                <span class="stat-meta">This month</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-title">Remaining</span>
+                                <strong class="stat-num text-success">$680</strong>
+                                <span class="stat-meta text-success">28% left</span>
+                            </div>
+                        </div>
+
+                        <!-- Living Garden Plant Canvas -->
+                        <div class="garden-bed">
+                            <div class="plant-card">
+                                <div class="plant-pot">🌿</div>
+                                <span class="plant-name">Groceries</span>
+                                <span class="plant-status status-good">Thriving</span>
+                            </div>
+                            <div class="plant-card">
+                                <div class="plant-pot">🌱</div>
+                                <span class="plant-name">Dining Out</span>
+                                <span class="plant-status status-ok">Growing</span>
+                            </div>
+                            <div class="plant-card">
+                                <div class="plant-pot">🍃</div>
+                                <span class="plant-name">Subscriptions</span>
+                                <span class="plant-status status-good">Healthy</span>
+                            </div>
+                            <div class="plant-card">
+                                <div class="plant-pot">🥀</div>
+                                <span class="plant-name">Shopping</span>
+                                <span class="plant-status status-wilting">Wilting</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4 Pillars of the Garden -->
+        <section id="features" class="section-container pillars-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Four ways your garden never lets you lie to yourself.</h2>
+                    <p>Not icons and promises — this is what those four pieces actually look like inside the app.</p>
+                </div>
+
+                <div class="pillars-grid">
+                    <div class="feature-card">
+                        <h3>Living Garden Canvas</h3>
+                        <p>Every category is a plant, sized and colored by exactly how much you've budgeted and spent. Nothing here is decorative — move the number, and the plant moves with it.</p>
+                        <div class="card-demo">
+                            <div class="demo-plants">
+                                <span class="demo-emoji">🌱</span>
+                                <span class="demo-emoji">🌿</span>
+                                <span class="demo-emoji">🌳</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Goal Trees</h3>
+                        <p>Savings goals grow as their own trees — trunk, branches, and leaves climbing toward the target, with a gold sparkle the moment you hit it.</p>
+                        <div class="card-demo">
+                            <div class="tree-progress">
+                                <div class="goal-header">
+                                    <strong>Japan Trip</strong>
+                                    <span>$2,500 / $2,500</span>
+                                </div>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 100%;"></div>
+                                </div>
+                                <span class="goal-sparkle">✨ 100% funded!</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Garden Advisor</h3>
+                        <p>An aggregated digest of your numbers — never your raw transactions — feeds a handful of sharp, specific notes. Advice, not a chat wall.</p>
+                        <div class="card-demo">
+                            <div class="advisor-bubble">
+                                <p>"Your Groceries plant grew fast this week — want to move $20 into Savings?"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="feature-card">
+                        <h3>Weather Banner</h3>
+                        <p>Sunny when you're under budget. Cloudy when you're close. Stormy the second you're over. The whole forecast, in one glance, no math required.</p>
+                        <div class="card-demo">
+                            <div class="weather-demo">
+                                <span>⛅ Cloudy (close to cap)</span>
+                                <div class="progress-track">
+                                    <div class="progress-fill warning" style="width: 82%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Preview Section with Tabs (Screens from the App) -->
+        <section id="preview" class="section-container preview-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Now see it for real.</h2>
+                    <p>Three actual screens from the app — your dashboard, your envelopes, and your reports.</p>
+                </div>
+
+                <!-- Preview Grid Cards -->
+                <div class="preview-cards-grid">
+                    <!-- Screen 1: Garden -->
+                    <div class="screen-card">
+                        <div class="screen-info">
+                            <h4>Garden</h4>
+                            <p>Your categories as plants, at a glance.</p>
+                        </div>
+                        <div class="screen-browser">
+                            <div class="browser-header">
+                                <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+                                <div class="address-bar">sprout.app/garden</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="mini-weather">Sunny — Garden is healthy</div>
+                                <div class="mini-plants">
+                                    <div>🪴 Groceries</div>
+                                    <div>🌿 Dining</div>
+                                    <div>🌱 Utilities</div>
+                                    <div>🌾 Entertainment</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 2: Budget Envelopes -->
+                    <div class="screen-card">
+                        <div class="screen-info">
+                            <h4>Budget</h4>
+                            <p>Envelope-style budgeting with move-money.</p>
+                        </div>
+                        <div class="screen-browser">
+                            <div class="browser-header">
+                                <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+                                <div class="address-bar">sprout.app/budget</div>
+                            </div>
+                            <div class="screen-body">
+                                <div class="envelope-unallocated">
+                                    <span>Unallocated: <strong>$310</strong></span>
+                                </div>
+                                <div class="envelopes-list">
+                                    <div class="env-item">
+                                        <div class="env-label"><span>Groceries</span><span>$220 / $400</span></div>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 55%;"></div></div>
+                                    </div>
+                                    <div class="env-item">
+                                        <div class="env-label"><span>Dining Out</span><span>$90 / $200</span></div>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 45%;"></div></div>
+                                    </div>
+                                    <div class="env-item">
+                                        <div class="env-label"><span>Subscriptions</span><span>$30 / $80</span></div>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 37%;"></div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 3: Reports -->
+                    <div class="screen-card">
+                        <div class="screen-info">
+                            <h4>Reports</h4>
+                            <p>Where your money actually goes.</p>
+                        </div>
+                        <div class="screen-browser">
+                            <div class="browser-header">
+                                <div class="window-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div>
+                                <div class="address-bar">sprout.app/reports</div>
+                            </div>
+                            <div class="screen-body">
+                                <ul class="reports-legend">
+                                    <li><span class="legend-color color-1"></span> Groceries</li>
+                                    <li><span class="legend-color color-2"></span> Dining Out</li>
+                                    <li><span class="legend-color color-3"></span> Subscriptions</li>
+                                    <li><span class="legend-color color-4"></span> Shopping</li>
+                                </ul>
+                                <div class="reports-bars">
+                                    <div class="report-bar" style="height: 60px;"></div>
+                                    <div class="report-bar" style="height: 90px;"></div>
+                                    <div class="report-bar" style="height: 45px;"></div>
+                                    <div class="report-bar" style="height: 110px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3 Steps Section -->
+        <section id="steps" class="section-container steps-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>From zero to garden in under five minutes.</h2>
+                </div>
+
+                <div class="steps-timeline">
+                    <div class="step-card">
+                        <div class="step-num">1</div>
+                        <div class="step-text">
+                            <h3>Plant a category</h3>
+                            <p>Give it a name and a monthly number — that's a seed in the ground.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">2</div>
+                        <div class="step-text">
+                            <h3>Log what you spend</h3>
+                            <p>Every transaction waters or drains its plant, the instant you save it.</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num">3</div>
+                        <div class="step-text">
+                            <h3>Watch the season grow</h3>
+                            <p>Come back anytime and see, at a glance, exactly which habits are working.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Banner Call-to-Action -->
+        <section class="cta-banner">
+            <div class="container cta-box">
+                <h2>Your next paycheck deserves better than a spreadsheet.</h2>
+                <p>Free to start. No credit card. Just a budget that finally shows its work.</p>
+                <NavLink href="sign-up" class="btn btn-primary btn-large">Plant your first garden</NavLink>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="brand">🌱 Sprout</div>
+            <nav class="footer-links">
+                <a href="#features">Features</a>
+                <a href="#preview">Preview</a>
+                <a href="#steps">How it works</a>
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#top">Back to top</a>
+            </nav>
+        </div>
+    </footer>
+</div>

@@ -1,0 +1,154 @@
+@page "/sign-up"
+@using System.ComponentModel.DataAnnotations
+@inject NavigationManager Navigation
+
+<PageTitle>Sign Up — Sprout</PageTitle>
+
+<div class="auth-wrapper">
+    <!-- Left Hero Image Panel -->
+    <div class="auth-hero-panel">
+        <img class="hero-photo"
+             src="https://images.unsplash.com/photo-1623982203080-2881a8aeb1ec?auto=format&fit=crop&w=1400&q=80"
+             alt="Morning light falling across a windowsill crowded with young potted seedlings" />
+        <div class="hero-backdrop"></div>
+
+        <div class="hero-layer">
+            <NavLink href="/" class="hero-brand">
+                <span class="brand-dot"></span>
+                <span>Sprout</span>
+            </NavLink>
+
+            <div class="hero-feature-content">
+                <div class="hero-stats">
+                    <span class="stat-number">12,400+</span>
+                    <span class="stat-label">gardens growing</span>
+                </div>
+
+                <div class="feature-bullets">
+                    <div class="bullet-row">
+                        <span class="check-icon">✓</span>
+                        <span>Smart watering reminders</span>
+                    </div>
+                    <div class="bullet-row">
+                        <span class="check-icon">✓</span>
+                        <span>Season-by-season tracking</span>
+                    </div>
+                    <div class="bullet-row">
+                        <span class="check-icon">✓</span>
+                        <span>A community to grow with</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <img src="https://images.unsplash.com/photo-1610930815255-0c92968e87a2?auto=format&fit=crop&w=480&q=80"
+                         alt="Seedling garden bed" />
+                    <p>“Day 1 — first seeds planted.”</p>
+                </div>
+            </div>
+
+            <p class="hero-bottom-text">Every category has room to grow.</p>
+        </div>
+    </div>
+
+    <!-- Right Form Section -->
+    <div class="auth-form-panel">
+        <header class="auth-header">
+            <NavLink href="/" class="mobile-brand">
+                <span class="brand-dot"></span>
+                <span>Sprout</span>
+            </NavLink>
+            <div class="header-links">
+                <NavLink href="sign-in" class="nav-alt">Sign in</NavLink>
+                <NavLink href="/" class="nav-alt">Back to home</NavLink>
+            </div>
+        </header>
+
+        <div class="auth-box-center">
+            <div class="auth-box">
+                <div class="auth-heading">
+                    <h1>Plant your garden</h1>
+                    <p>Create an account to start tracking your first season.</p>
+                </div>
+
+                <!-- Social OAuth buttons -->
+                <div class="social-login-group">
+                    <button type="button" class="btn-oauth">
+                        <svg width="18" height="18" viewBox="0 0 24 24">
+                            <path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.7l3.1-3.1C17.3 1.8 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z" />
+                            <path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.7-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z" />
+                            <path fill="#FBBC05" d="M5.6 14.8c-.2-.7-.4-1.5-.4-2.3s.2-1.6.4-2.3L1.9 7.3C.7 9.7 0 10.8 0 12s.7 2.3 1.9 4.7l3.7-2.9z" />
+                            <path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2-6.4-4.8L1.9 16.4C3.7 20.4 7.5 23 12 23z" />
+                        </svg>
+                        <span>Continue with Google</span>
+                    </button>
+                    <button type="button" class="btn-oauth">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/>
+                        </svg>
+                        <span>Continue with GitHub</span>
+                    </button>
+                </div>
+
+                <div class="auth-divider">
+                    <span>or sign up with email</span>
+                </div>
+
+                <!-- Registration Form -->
+                <EditForm Model="@signUpModel" OnValidSubmit="HandleSubmit" class="input-form">
+                    <DataAnnotationsValidator />
+
+                    <div class="field-wrap">
+                        <label for="name">Your name</label>
+                        <InputText id="name" class="form-input" @bind-Value="signUpModel.Name" placeholder="Alex Chen" />
+                        <ValidationMessage For="@(() => signUpModel.Name)" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="email">Email address</label>
+                        <InputText id="email" class="form-input" @bind-Value="signUpModel.Email" placeholder="you@domain.com" />
+                        <ValidationMessage For="@(() => signUpModel.Email)" />
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="password">Password</label>
+                        <InputText id="password" type="password" class="form-input" @bind-Value="signUpModel.Password" placeholder="At least 8 characters" />
+                        <ValidationMessage For="@(() => signUpModel.Password)" />
+                    </div>
+
+                    <button type="submit" class="btn-submit">Plant your garden</button>
+                </EditForm>
+
+                <p class="auth-footer-prompt">
+                    Already have an account? <NavLink href="sign-in">Sign in</NavLink>
+                </p>
+            </div>
+        </div>
+
+        <footer class="legal-footer">
+            <p>© 2026 Sprout · <a href="#">Privacy Policy</a></p>
+        </footer>
+    </div>
+</div>
+
+@code {
+    private SignUpFormModel signUpModel = new();
+
+    private void HandleSubmit()
+    {
+        Navigation.NavigateTo("/");
+    }
+
+    public class SignUpFormModel
+    {
+        [Required(ErrorMessage = "Name is required.")]
+        public string Name { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Email address is required.")]
+        [EmailAddress(ErrorMessage = "Please enter a valid email address.")]
+        public string Email { get; set; } = string.Empty;
+
+        [Required(ErrorMessage = "Password is required.")]
+        [MinLength(8, ErrorMessage = "Password must be at least 8 characters.")]
+        public string Password { get; set; } = string.Empty;
+    }
+}
