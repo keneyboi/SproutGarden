@@ -4,7 +4,7 @@
 
 <PageTitle>Sign Up — Sprout</PageTitle>
 
-<div class="auth-wrapper">
+<div class="auth-wrapper reverse @(isLeaving ? "swap-exit" : "")">
     <!-- Left Hero Image Panel -->
     <div class="auth-hero-panel">
         <img class="hero-photo"
@@ -58,7 +58,7 @@
                 <span>Sprout</span>
             </NavLink>
             <div class="header-links">
-                <NavLink href="sign-in" class="nav-alt">Sign in</NavLink>
+                <a href="sign-in" class="nav-alt" @onclick='() => NavigateWithSwap("sign-in")' @onclick:preventDefault="true">Sign in</a>
                 <NavLink href="/" class="nav-alt">Back to home</NavLink>
             </div>
         </header>
@@ -119,7 +119,7 @@
                 </EditForm>
 
                 <p class="auth-footer-prompt">
-                    Already have an account? <NavLink href="sign-in">Sign in</NavLink>
+                    Already have an account? <a href="sign-in" @onclick='() => NavigateWithSwap("sign-in")' @onclick:preventDefault="true">Sign in</a>
                 </p>
             </div>
         </div>
@@ -132,10 +132,19 @@
 
 @code {
     private SignUpFormModel signUpModel = new();
+    private bool isLeaving = false;
 
     private void HandleSubmit()
     {
         Navigation.NavigateTo("/");
+    }
+
+    private async Task NavigateWithSwap(string url)
+    {
+        isLeaving = true;
+        StateHasChanged();
+        await Task.Delay(450);
+        Navigation.NavigateTo(url);
     }
 
     public class SignUpFormModel

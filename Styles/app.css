@@ -59,6 +59,10 @@
         @apply flex items-center gap-2 text-xl font-bold text-primary;
     }
 
+    .brand-name {
+        @apply bg-linear-to-r from-primary to-accent bg-clip-text text-transparent;
+    }
+
     .nav-links {
         @apply flex gap-8 max-[860px]:hidden;
     }
@@ -73,7 +77,7 @@
 
     /* ---------- Buttons ---------- */
     .btn {
-        @apply inline-flex items-center justify-center rounded-full font-semibold text-[0.95rem] px-[1.4rem] py-[0.65rem] transition-all duration-200 border-none cursor-pointer;
+        @apply inline-flex items-center justify-center rounded-full font-semibold text-[0.95rem] px-[1.4rem] py-[0.65rem] transition-all duration-200 border-none cursor-pointer hover:scale-[1.03] active:scale-95;
     }
 
     .btn-primary {
@@ -94,7 +98,11 @@
 
     /* ---------- Hero section ---------- */
     .hero-section {
-        @apply pt-[4.5rem] pb-14;
+        @apply relative overflow-hidden pt-[4.5rem] pb-14;
+    }
+
+    .hero-decor {
+        @apply absolute inset-0 z-0 overflow-hidden pointer-events-none;
     }
 
     .hero-grid {
@@ -106,7 +114,7 @@
     }
 
     .highlight {
-        @apply text-accent;
+        @apply bg-linear-to-r from-accent via-emerald-500 to-sky-500 bg-clip-text text-transparent;
     }
 
     .hero-subtext {
@@ -118,12 +126,49 @@
     }
 
     .hero-badges {
-        @apply mt-8 text-sm text-text-light flex gap-2;
+        @apply mt-8 flex flex-wrap gap-2;
+    }
+
+    .badge-chip {
+        @apply inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full border transition-transform duration-150 hover:-translate-y-0.5;
+    }
+
+    .badge-chip-emerald {
+        @apply bg-emerald-50 text-emerald-700 border-emerald-200;
+    }
+
+    .badge-chip-sky {
+        @apply bg-sky-50 text-sky-700 border-sky-200;
+    }
+
+    .badge-chip-amber {
+        @apply bg-amber-50 text-amber-700 border-amber-200;
+    }
+
+    .badge-chip-rose {
+        @apply bg-rose-50 text-rose-700 border-rose-200;
+    }
+
+    /* Soft blurred color blobs used behind the hero and CTA banner */
+    .blob {
+        @apply absolute rounded-full blur-3xl opacity-40;
+    }
+
+    .blob-emerald {
+        @apply w-72 h-72 bg-emerald-300 -top-10 -left-10;
+    }
+
+    .blob-sky {
+        @apply w-72 h-72 bg-sky-300 top-16 -right-10;
+    }
+
+    .blob-amber {
+        @apply w-56 h-56 bg-amber-200 bottom-[-3rem] left-1/3;
     }
 
     /* ---------- Browser window mockup ---------- */
     .browser-mockup {
-        @apply bg-white border border-border rounded-xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(34,53,39,0.12)];
+        @apply bg-white border border-border rounded-xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(34,53,39,0.12)] transition-shadow duration-300 hover:shadow-[0_28px_55px_-15px_rgba(34,53,39,0.2)];
     }
 
     .browser-header {
@@ -158,20 +203,35 @@
         @apply p-6 flex flex-col gap-5;
     }
 
+    /* The weather card is now a clickable button that cycles through
+       Sunny / Cloudy / Stormy states; background, border and text colors
+       are supplied dynamically from the component's @code block. */
     .weather-card {
-        @apply bg-[#ebf8f1] border border-[#c8edd9] rounded-lg px-4 py-[0.85rem] flex items-center gap-3;
+        @apply w-full text-left font-sans border rounded-lg px-4 py-[0.85rem] flex items-center gap-3 cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md active:translate-y-0;
     }
 
     .weather-icon {
-        @apply text-[1.6rem];
+        @apply text-[1.6rem] shrink-0;
+    }
+
+    .weather-copy {
+        @apply flex flex-col flex-1 min-w-0 text-left;
     }
 
     .weather-title {
-        @apply font-bold text-[#1e6643] text-[0.95rem];
+        @apply block font-bold text-[0.95rem];
     }
 
     .weather-sub {
-        @apply text-[0.8rem] text-[#4a7c61];
+        @apply block text-[0.8rem];
+    }
+
+    .weather-hint {
+        @apply text-[0.65rem] font-semibold text-text-light shrink-0 opacity-0 transition-opacity duration-150;
+    }
+
+    .weather-card:hover .weather-hint {
+        @apply opacity-100;
     }
 
     .stats-row {
@@ -203,7 +263,7 @@
     }
 
     .plant-card {
-        @apply bg-white border border-border rounded-lg px-1 py-3;
+        @apply bg-white border border-border rounded-lg px-1 py-3 transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:border-accent;
     }
 
     .plant-pot {
@@ -253,7 +313,27 @@
     }
 
     .feature-card {
-        @apply bg-white border border-border rounded-xl p-7 flex flex-col justify-between;
+        @apply bg-white border border-border rounded-xl p-7 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-transparent;
+    }
+
+    .icon-badge {
+        @apply w-12 h-12 rounded-2xl flex items-center justify-center text-2xl mb-4;
+    }
+
+    .icon-badge-emerald {
+        @apply bg-emerald-100 text-emerald-700;
+    }
+
+    .icon-badge-sky {
+        @apply bg-sky-100 text-sky-700;
+    }
+
+    .icon-badge-amber {
+        @apply bg-amber-100 text-amber-700;
+    }
+
+    .icon-badge-rose {
+        @apply bg-rose-100 text-rose-700;
     }
 
     .feature-card h3 {
@@ -300,13 +380,30 @@
         @apply block text-[0.85rem] font-semibold mb-2;
     }
 
-    /* ---------- Preview screens ---------- */
-    .preview-cards-grid {
-        @apply grid grid-cols-3 gap-6 max-[860px]:grid-cols-1;
+    /* ---------- Preview screens (interactive tabs) ---------- */
+    .preview-tabs {
+        @apply flex flex-wrap justify-center gap-2 mb-8;
+    }
+
+    .preview-tab {
+        @apply inline-flex items-center gap-2 font-semibold text-sm text-text-muted bg-white border border-border rounded-full px-4 py-2 cursor-pointer transition-all duration-200 hover:text-primary hover:border-accent;
+    }
+
+    .preview-tab.active {
+        @apply bg-primary text-white! border-primary shadow-[0_8px_20px_-8px_rgba(45,106,79,0.5)];
+    }
+
+    .preview-tab-icon {
+        @apply text-base;
+    }
+
+    .preview-stage {
+        @apply max-w-[560px] mx-auto;
     }
 
     .screen-card {
         @apply flex flex-col gap-4;
+        animation: sprout-fade-in 0.35s ease;
     }
 
     .screen-info h4 {
@@ -395,7 +492,19 @@
     }
 
     .step-num {
-        @apply w-[38px] h-[38px] rounded-full bg-[#d4f3e3] text-[#1e6643] font-extrabold flex items-center justify-center shrink-0;
+        @apply w-[38px] h-[38px] rounded-full font-extrabold flex items-center justify-center shrink-0;
+    }
+
+    .step-num-emerald {
+        @apply bg-[#d4f3e3] text-[#1e6643];
+    }
+
+    .step-num-sky {
+        @apply bg-sky-100 text-sky-700;
+    }
+
+    .step-num-amber {
+        @apply bg-amber-100 text-amber-700;
     }
 
     .step-text h3 {
@@ -408,7 +517,11 @@
 
     /* ---------- CTA banner ---------- */
     .cta-banner {
-        @apply py-24 bg-[#eef4ed] border-t border-border text-center;
+        @apply relative overflow-hidden py-24 bg-linear-to-br from-emerald-50 via-[#eef4ed] to-sky-50 border-t border-border text-center;
+    }
+
+    .cta-decor {
+        @apply absolute inset-0 z-0 overflow-hidden pointer-events-none;
     }
 
     .cta-box h2 {
@@ -440,7 +553,61 @@
        Sign in / Sign up pages
        ====================================================================== */
     .auth-wrapper {
-        @apply flex min-h-screen bg-[#0b110c] text-[#e6eee8] font-sans;
+        @apply flex min-h-screen bg-[#0b110c] text-[#e6eee8] font-sans overflow-hidden;
+    }
+
+    /* Sign Up uses this to flip which side the photo/form sit on. */
+    .auth-wrapper.reverse {
+        @apply flex-row-reverse;
+    }
+
+    .auth-hero-panel,
+    .auth-form-panel {
+        transition: transform 0.4s cubic-bezier(0.65, 0, 0.35, 1), opacity 0.4s ease;
+        animation-duration: 0.5s;
+        animation-timing-function: ease;
+        animation-fill-mode: both;
+    }
+
+    /* Entrance: panels drift in from the side they'll exit toward on the
+       other page, so navigating feels like a continuous slide. */
+    .auth-wrapper:not(.reverse) .auth-hero-panel {
+        animation-name: sprout-slide-from-left;
+    }
+
+    .auth-wrapper:not(.reverse) .auth-form-panel {
+        animation-name: sprout-slide-from-right;
+    }
+
+    .auth-wrapper.reverse .auth-hero-panel {
+        animation-name: sprout-slide-from-right;
+    }
+
+    .auth-wrapper.reverse .auth-form-panel {
+        animation-name: sprout-slide-from-left;
+    }
+
+    /* Exit: applied just before navigating away, so the photo and form
+       panels visibly swap sides — matching the layout of the page they're
+       heading to — before the route actually changes. */
+    .auth-wrapper.swap-exit:not(.reverse) .auth-hero-panel {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    .auth-wrapper.swap-exit:not(.reverse) .auth-form-panel {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .auth-wrapper.swap-exit.reverse .auth-hero-panel {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    .auth-wrapper.swap-exit.reverse .auth-form-panel {
+        transform: translateX(100%);
+        opacity: 0;
     }
 
     .auth-hero-panel {
@@ -611,5 +778,55 @@
 
     .legal-footer a {
         @apply text-[#8c9e91] underline;
+    }
+
+    /* ======================================================================
+       Scroll-reveal (progressive enhancement — see wwwroot/js/site.js).
+       Elements are only ever hidden once JavaScript actually adds
+       `.reveal-init`, so content stays fully visible with JS disabled.
+       ====================================================================== */
+    .reveal {
+        @apply transition-all duration-700 ease-out;
+    }
+
+    .reveal.reveal-init {
+        @apply opacity-0 translate-y-4;
+    }
+
+    .reveal.in-view {
+        @apply opacity-100! translate-y-0!;
+    }
+}
+
+@keyframes sprout-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sprout-slide-from-left {
+    from {
+        opacity: 0;
+        transform: translateX(-48px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes sprout-slide-from-right {
+    from {
+        opacity: 0;
+        transform: translateX(48px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
     }
 }
