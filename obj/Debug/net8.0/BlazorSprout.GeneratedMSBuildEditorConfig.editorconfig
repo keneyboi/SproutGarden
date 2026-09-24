@@ -9,43 +9,43 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorSprout
 build_property.RootNamespace = BlazorSprout
-build_property.ProjectDir = Z:\L23Y16W40\AppDev-Sprout\BlazorSprout\
+build_property.ProjectDir = Z:\L23Y16W40\SproutGarden-main\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = Z:\L23Y16W40\AppDev-Sprout\BlazorSprout
+build_property.MSBuildProjectDirectory = Z:\L23Y16W40\SproutGarden-main
 build_property._RazorSourceGeneratorDebug = 
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/App.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/App.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/Routes.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/_Imports.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/Layout/MainLayout.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-cegkadiihk
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/Layout/NavMenu.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-x3g46tf3ix
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/Pages/Home.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/Pages/Home.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-aixxw685m8
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/Pages/SignIn.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/Pages/SignIn.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWduSW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-dd2e3uetzr
 
-[Z:/L23Y16W40/AppDev-Sprout/BlazorSprout/Components/Pages/SignUp.razor]
+[Z:/L23Y16W40/SproutGarden-main/Components/Pages/SignUp.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWduVXAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-z088jvn3wd

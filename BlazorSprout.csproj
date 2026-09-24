@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <!-- Rebuild the Tailwind CSS bundle whenever the project builds. This is
+       best-effort: a pre-built wwwroot/css/app.css is committed to the repo,
+       so a missing npm/node install will not break `dotnet build`. -->
+  <Target Name="TailwindCss" BeforeTargets="Build">
+    <Exec Command="npm install" Condition="!Exists('node_modules')" ContinueOnError="WarnAndContinue" />
+    <Exec Command="npm run build:css" ContinueOnError="WarnAndContinue" />
+  </Target>
+
 </Project>

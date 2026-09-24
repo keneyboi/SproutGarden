@@ -1,0 +1,615 @@
+@import "tailwindcss";
+
+/* Make sure Tailwind scans the Razor components for class names, even though
+   automatic content detection usually finds these already. */
+@source "../Components/**/*.razor";
+
+/* ---------------------------------------------------------------------- */
+/* Design tokens — mirrors the app's original CSS custom properties.      */
+/* Because these are declared as --color-*, Tailwind auto-generates       */
+/* bg-*, text-*, border-*, etc. utilities for each one (e.g. bg-primary). */
+/* ---------------------------------------------------------------------- */
+@theme {
+    --color-bg-app: #f7f9f6;
+    --color-bg-surface: #ffffff;
+    --color-bg-card: #f2f5f1;
+    --color-border: #e1e8df;
+    --color-border-subtle: #edf2eb;
+    --color-text-main: #1d2e22;
+    --color-text-muted: #5e7364;
+    --color-text-light: #8fa093;
+    --color-primary: #2d6a4f;
+    --color-primary-hover: #204d39;
+    --color-accent: #52b788;
+    --color-accent-soft: rgb(82 183 136 / 0.15);
+
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+    body {
+        @apply bg-bg-app text-text-main font-sans leading-[1.6];
+    }
+
+    a {
+        @apply text-inherit no-underline;
+    }
+}
+
+@layer components {
+    /* ---------- Shared layout ---------- */
+    .sprout-landing {
+        @apply bg-bg-app text-text-main min-h-screen;
+    }
+
+    .container {
+        @apply max-w-[1120px] mx-auto px-6;
+    }
+
+    /* ---------- Navbar (Home) ---------- */
+    .navbar {
+        @apply sticky top-0 z-[100] bg-white/[92%] backdrop-blur-[8px] border-b border-border;
+    }
+
+    .nav-inner {
+        @apply flex justify-between items-center h-[68px];
+    }
+
+    .brand {
+        @apply flex items-center gap-2 text-xl font-bold text-primary;
+    }
+
+    .nav-links {
+        @apply flex gap-8 max-[860px]:hidden;
+    }
+
+    .nav-links a {
+        @apply text-text-muted font-medium text-[0.95rem] transition-colors duration-150 hover:text-primary;
+    }
+
+    .nav-cta {
+        @apply flex items-center gap-5;
+    }
+
+    /* ---------- Buttons ---------- */
+    .btn {
+        @apply inline-flex items-center justify-center rounded-full font-semibold text-[0.95rem] px-[1.4rem] py-[0.65rem] transition-all duration-200 border-none cursor-pointer;
+    }
+
+    .btn-primary {
+        @apply bg-primary text-white! hover:bg-primary-hover;
+    }
+
+    .btn-outline {
+        @apply bg-white text-text-main border border-border hover:bg-bg-card;
+    }
+
+    .btn-text {
+        @apply font-semibold text-text-muted hover:text-primary;
+    }
+
+    .btn-large {
+        @apply px-8 py-[0.85rem] text-[1.05rem];
+    }
+
+    /* ---------- Hero section ---------- */
+    .hero-section {
+        @apply pt-[4.5rem] pb-14;
+    }
+
+    .hero-grid {
+        @apply grid grid-cols-[1.1fr_1fr] gap-14 items-center max-[860px]:grid-cols-1;
+    }
+
+    .hero-content h1 {
+        @apply text-[3.25rem] leading-[1.12] font-extrabold tracking-[-0.025em] text-text-main max-[860px]:text-[2.4rem];
+    }
+
+    .highlight {
+        @apply text-accent;
+    }
+
+    .hero-subtext {
+        @apply mt-5 text-[1.15rem] text-text-muted leading-[1.6];
+    }
+
+    .hero-actions {
+        @apply mt-8 flex gap-4;
+    }
+
+    .hero-badges {
+        @apply mt-8 text-sm text-text-light flex gap-2;
+    }
+
+    /* ---------- Browser window mockup ---------- */
+    .browser-mockup {
+        @apply bg-white border border-border rounded-xl overflow-hidden shadow-[0_20px_40px_-15px_rgba(34,53,39,0.12)];
+    }
+
+    .browser-header {
+        @apply bg-[#f8faf8] border-b border-border px-4 py-3 flex items-center gap-4;
+    }
+
+    .window-dots {
+        @apply flex gap-1.5;
+    }
+
+    .dot {
+        @apply w-2.5 h-2.5 rounded-full;
+    }
+
+    .dot-red {
+        @apply bg-[#e06c75];
+    }
+
+    .dot-yellow {
+        @apply bg-[#e5c07b];
+    }
+
+    .dot-green {
+        @apply bg-[#98c379];
+    }
+
+    .address-bar {
+        @apply bg-white border border-border rounded-md px-3 py-[3px] text-[0.8rem] text-text-muted w-full text-center;
+    }
+
+    .mockup-body {
+        @apply p-6 flex flex-col gap-5;
+    }
+
+    .weather-card {
+        @apply bg-[#ebf8f1] border border-[#c8edd9] rounded-lg px-4 py-[0.85rem] flex items-center gap-3;
+    }
+
+    .weather-icon {
+        @apply text-[1.6rem];
+    }
+
+    .weather-title {
+        @apply font-bold text-[#1e6643] text-[0.95rem];
+    }
+
+    .weather-sub {
+        @apply text-[0.8rem] text-[#4a7c61];
+    }
+
+    .stats-row {
+        @apply grid grid-cols-2 gap-4;
+    }
+
+    .stat-box {
+        @apply bg-bg-card border border-border rounded-lg p-4;
+    }
+
+    .stat-title {
+        @apply block text-xs text-text-muted;
+    }
+
+    .stat-num {
+        @apply block text-[1.6rem] font-bold my-1;
+    }
+
+    .stat-meta {
+        @apply text-[0.8rem] text-text-light;
+    }
+
+    .text-success {
+        @apply text-accent!;
+    }
+
+    .garden-bed {
+        @apply grid grid-cols-4 gap-3 text-center;
+    }
+
+    .plant-card {
+        @apply bg-white border border-border rounded-lg px-1 py-3;
+    }
+
+    .plant-pot {
+        @apply text-[1.75rem] mb-1;
+    }
+
+    .plant-name {
+        @apply block font-semibold text-[0.8rem];
+    }
+
+    .plant-status {
+        @apply inline-block text-[0.65rem] px-1.5 py-0.5 rounded-full mt-1;
+    }
+
+    .status-good {
+        @apply bg-[#d4f3e3] text-[#1e6643];
+    }
+
+    .status-ok {
+        @apply bg-[#fdf2d0] text-[#82661c];
+    }
+
+    .status-wilting {
+        @apply bg-[#fce1e4] text-[#9c2738];
+    }
+
+    /* ---------- Shared section heading ---------- */
+    .section-container {
+        @apply py-20 border-t border-border;
+    }
+
+    .section-heading {
+        @apply text-center max-w-[680px] mx-auto mb-14;
+    }
+
+    .section-heading h2 {
+        @apply text-[2.25rem] font-extrabold tracking-[-0.02em] text-text-main;
+    }
+
+    .section-heading p {
+        @apply mt-3 text-[1.1rem] text-text-muted;
+    }
+
+    /* ---------- Four pillars ---------- */
+    .pillars-grid {
+        @apply grid grid-cols-[repeat(auto-fit,minmax(240px,1fr))] gap-6;
+    }
+
+    .feature-card {
+        @apply bg-white border border-border rounded-xl p-7 flex flex-col justify-between;
+    }
+
+    .feature-card h3 {
+        @apply text-xl font-bold text-primary mb-3;
+    }
+
+    .feature-card p {
+        @apply text-[0.95rem] text-text-muted leading-[1.55];
+    }
+
+    .card-demo {
+        @apply mt-6 bg-bg-card border border-border rounded-lg p-4;
+    }
+
+    .demo-plants {
+        @apply text-[1.75rem] flex justify-around;
+    }
+
+    .goal-header {
+        @apply flex justify-between text-[0.85rem] mb-2;
+    }
+
+    .progress-track {
+        @apply bg-[#e2e8e2] rounded-full h-2 overflow-hidden;
+    }
+
+    .progress-fill {
+        @apply bg-accent h-full;
+    }
+
+    .progress-fill.warning {
+        @apply bg-[#f0ad4e];
+    }
+
+    .goal-sparkle {
+        @apply block mt-[0.4rem] text-xs text-[#1e6643] font-semibold;
+    }
+
+    .advisor-bubble p {
+        @apply text-[0.85rem]! italic text-primary!;
+    }
+
+    .weather-demo span {
+        @apply block text-[0.85rem] font-semibold mb-2;
+    }
+
+    /* ---------- Preview screens ---------- */
+    .preview-cards-grid {
+        @apply grid grid-cols-3 gap-6 max-[860px]:grid-cols-1;
+    }
+
+    .screen-card {
+        @apply flex flex-col gap-4;
+    }
+
+    .screen-info h4 {
+        @apply text-xl font-bold text-text-main;
+    }
+
+    .screen-info p {
+        @apply text-[0.9rem] text-text-muted;
+    }
+
+    .screen-browser {
+        @apply bg-white border border-border rounded-lg overflow-hidden shadow-[0_10px_25px_-10px_rgba(0,0,0,0.05)];
+    }
+
+    .screen-body {
+        @apply p-5 flex flex-col gap-[0.85rem] min-h-[180px];
+    }
+
+    .mini-weather {
+        @apply bg-[#ebf8f1] text-[#1e6643] font-semibold text-xs p-1.5 rounded text-center;
+    }
+
+    .mini-plants {
+        @apply grid grid-cols-2 gap-2 text-[0.8rem] text-center;
+    }
+
+    .mini-plants div {
+        @apply bg-bg-card px-1 py-2 rounded;
+    }
+
+    .envelope-unallocated {
+        @apply text-[0.85rem] text-primary bg-bg-card p-1.5 rounded;
+    }
+
+    .envelopes-list {
+        @apply flex flex-col gap-[0.65rem];
+    }
+
+    .env-label {
+        @apply flex justify-between text-xs mb-0.5;
+    }
+
+    .reports-legend {
+        @apply list-none text-xs grid grid-cols-2 gap-[0.35rem];
+    }
+
+    .reports-legend li {
+        @apply flex items-center gap-[0.35rem];
+    }
+
+    .legend-color {
+        @apply w-2 h-2 rounded-sm inline-block;
+    }
+
+    .color-1 {
+        @apply bg-primary;
+    }
+
+    .color-2 {
+        @apply bg-accent;
+    }
+
+    .color-3 {
+        @apply bg-[#d8f3dc];
+    }
+
+    .color-4 {
+        @apply bg-[#b7e4c7];
+    }
+
+    .reports-bars {
+        @apply flex items-end justify-around h-[110px] pt-[10px] border-b border-border;
+    }
+
+    .report-bar {
+        @apply w-6 bg-primary rounded-t;
+    }
+
+    /* ---------- Steps timeline ---------- */
+    .steps-timeline {
+        @apply max-w-[600px] mx-auto flex flex-col gap-8;
+    }
+
+    .step-card {
+        @apply flex gap-6 items-start;
+    }
+
+    .step-num {
+        @apply w-[38px] h-[38px] rounded-full bg-[#d4f3e3] text-[#1e6643] font-extrabold flex items-center justify-center shrink-0;
+    }
+
+    .step-text h3 {
+        @apply text-[1.2rem] font-bold text-text-main mb-1;
+    }
+
+    .step-text p {
+        @apply text-[0.95rem] text-text-muted;
+    }
+
+    /* ---------- CTA banner ---------- */
+    .cta-banner {
+        @apply py-24 bg-[#eef4ed] border-t border-border text-center;
+    }
+
+    .cta-box h2 {
+        @apply text-[2.35rem] font-extrabold tracking-[-0.02em];
+    }
+
+    .cta-box p {
+        @apply text-[1.1rem] text-text-muted mt-4 mb-8;
+    }
+
+    /* ---------- Footer ---------- */
+    .footer {
+        @apply py-10 bg-white border-t border-border;
+    }
+
+    .footer-inner {
+        @apply flex justify-between items-center;
+    }
+
+    .footer-links {
+        @apply flex gap-6 text-[0.9rem] text-text-muted;
+    }
+
+    .footer-links a {
+        @apply hover:text-primary;
+    }
+
+    /* ======================================================================
+       Sign in / Sign up pages
+       ====================================================================== */
+    .auth-wrapper {
+        @apply flex min-h-screen bg-[#0b110c] text-[#e6eee8] font-sans;
+    }
+
+    .auth-hero-panel {
+        @apply relative flex-1 flex overflow-hidden bg-[#04240f];
+    }
+
+    .hero-photo {
+        @apply absolute inset-0 w-full h-full object-cover z-[1];
+    }
+
+    .hero-backdrop {
+        @apply absolute inset-0 backdrop-blur-[2px] z-[2];
+        background: linear-gradient(180deg, rgb(8 14 9 / 0.75) 0%, rgb(8 14 9 / 0.9) 100%);
+    }
+
+    .hero-layer {
+        @apply relative z-[3] flex flex-col justify-between w-full p-14;
+    }
+
+    .hero-brand {
+        @apply flex items-center gap-2 text-xl font-bold text-[#f0f7f2] no-underline;
+    }
+
+    .brand-dot {
+        @apply w-2.5 h-2.5 rounded-full bg-[#2ecb72];
+    }
+
+    .hero-feature-content {
+        @apply max-w-[440px];
+    }
+
+    .stat-number {
+        @apply block text-[3.75rem] font-extrabold leading-none text-[#2ecb72];
+    }
+
+    .stat-label {
+        @apply block mt-2 text-[1.15rem] text-[#8c9e91];
+    }
+
+    .feature-bullets {
+        @apply my-8 flex flex-col gap-[0.85rem];
+    }
+
+    .bullet-row {
+        @apply flex items-center gap-3 text-[0.95rem] text-[#dbe4dd];
+    }
+
+    .check-icon {
+        @apply text-[#2ecb72] font-bold;
+    }
+
+    .testimonial-card {
+        @apply flex items-center gap-4 border border-[#203124] rounded-xl px-[1.15rem] py-[0.85rem] backdrop-blur-[6px];
+        background: rgb(18 28 20 / 0.8);
+    }
+
+    .testimonial-card img {
+        @apply w-11 h-11 rounded-lg object-cover;
+    }
+
+    .testimonial-card p {
+        @apply m-0 text-[0.875rem] text-[#92a497] italic;
+    }
+
+    .hero-bottom-text {
+        @apply m-0 text-[0.9rem] text-[#6d8172];
+    }
+
+    .auth-form-panel {
+        @apply flex-1 flex flex-col justify-between px-14 py-8 bg-white text-[#1a2e22];
+    }
+
+    .auth-header {
+        @apply flex justify-between items-center;
+    }
+
+    .mobile-brand {
+        @apply hidden items-center gap-2 font-bold text-[#1a2e22] no-underline;
+    }
+
+    .header-links {
+        @apply ml-auto flex gap-6;
+    }
+
+    .nav-alt {
+        @apply text-[#637768] no-underline text-[0.9rem] font-medium hover:text-[#1e6643];
+    }
+
+    .auth-box-center {
+        @apply flex justify-center items-center py-8;
+    }
+
+    .auth-box {
+        @apply w-full max-w-[390px];
+    }
+
+    .auth-heading h1 {
+        @apply text-[2rem] font-extrabold m-0 tracking-[-0.02em] text-[#111a14];
+    }
+
+    .auth-heading p {
+        @apply mt-[0.35rem] mb-0 text-[#637768] text-[0.95rem];
+    }
+
+    .social-login-group {
+        @apply mt-7 flex flex-col gap-3;
+    }
+
+    .btn-oauth {
+        @apply w-full flex items-center justify-center gap-3 px-4 py-3 rounded-lg bg-white border border-[#d9e2db] text-[#1a2e22] text-[0.925rem] font-medium cursor-pointer transition-colors duration-150 hover:bg-[#f4f7f4] hover:border-[#c4d4c8];
+    }
+
+    .auth-divider {
+        @apply relative text-center my-7;
+    }
+
+    .auth-divider::before {
+        content: "";
+        @apply absolute top-1/2 left-0 right-0 border-t border-[#e1e8e3];
+    }
+
+    .auth-divider span {
+        @apply relative bg-white px-3 text-[0.8rem] text-[#7b8e80];
+    }
+
+    .input-form {
+        @apply flex flex-col gap-[1.15rem];
+    }
+
+    .field-wrap {
+        @apply flex flex-col gap-[0.4rem];
+    }
+
+    .field-wrap label {
+        @apply text-[0.85rem] font-semibold text-[#314236];
+    }
+
+    /* Note: no ::deep needed here — with global Tailwind CSS (rather than
+       Blazor's per-component scoped CSS) this simply targets the rendered
+       <input>, same as it did with ::deep before. */
+    .form-input {
+        @apply w-full px-[0.9rem] py-3 rounded-lg bg-white border border-[#d0dbd3] text-[#111a14] text-[0.95rem] outline-none box-border placeholder:text-[#9aa89e] focus:border-[#2ecb72] focus:shadow-[0_0_0_3px_rgba(46,203,114,0.15)];
+    }
+
+    .invalid {
+        @apply border-[#eb5757]!;
+    }
+
+    .validation-message {
+        @apply block text-[#eb5757] text-[0.8rem] mt-1;
+    }
+
+    .btn-submit {
+        @apply w-full py-[0.85rem] rounded-lg border-none bg-[#2ecb72] text-white font-bold text-[0.95rem] mt-2 cursor-pointer transition-colors duration-200 hover:bg-[#27b665];
+    }
+
+    .auth-footer-prompt {
+        @apply mt-7 text-[0.9rem] text-center text-[#637768];
+    }
+
+    .auth-footer-prompt a {
+        @apply text-[#1e6643] font-semibold no-underline hover:underline;
+    }
+
+    .legal-footer {
+        @apply text-center text-[0.825rem] text-[#8c9e91];
+    }
+
+    .legal-footer a {
+        @apply text-[#8c9e91] underline;
+    }
+}
