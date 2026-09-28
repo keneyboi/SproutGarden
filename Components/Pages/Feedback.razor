@@ -1,0 +1,232 @@
+@page "/feedback"
+@rendermode InteractiveServer
+@using System.ComponentModel.DataAnnotations
+
+<PageTitle>Feedback — Sprout</PageTitle>
+
+<div class="feedback-wrapper min-h-screen bg-bg-app flex flex-col items-center py-12 px-6 relative overflow-x-hidden">
+    <!-- Decorative background blobs -->
+    <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+        <span class="blob blob-emerald" style="top: -10%; left: -5%; width: 600px; height: 600px; opacity: 0.3;"></span>
+        <span class="blob blob-amber" style="bottom: -10%; right: -5%; width: 500px; height: 500px; opacity: 0.25;"></span>
+    </div>
+
+    <!-- Main Feedback Card -->
+    <div class="relative z-10 w-full max-w-[550px] bg-white/90 backdrop-blur-xl border border-white shadow-[0_30px_60px_-15px_rgba(34,53,39,0.15)] rounded-3xl p-10 transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(34,53,39,0.2)] my-auto">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-10">
+             <NavLink href="/" class="brand no-underline">
+                <span class="brand-sprout text-3xl">🌱</span>
+                <span class="brand-name text-2xl font-bold">Sprout</span>
+            </NavLink>
+            <NavLink href="/" class="text-[0.9rem] font-semibold text-text-muted hover:text-primary transition-colors no-underline px-3 py-1.5 rounded-full hover:bg-bg-card">
+                Back to home
+            </NavLink>
+        </div>
+
+        @if (isSubmitted)
+        {
+            <div class="text-center py-10 animate-[sprout-fade-in_0.5s_ease]">
+                <div class="text-6xl mb-6 transform transition-transform hover:scale-110 duration-300">✨</div>
+                <h2 class="text-3xl font-extrabold text-text-main mb-3 tracking-tight">Thank you!</h2>
+                <p class="text-text-muted text-[1.05rem] leading-relaxed">Your feedback has been planted. We appreciate your help in growing a better experience.</p>
+                <button @onclick="ResetForm" class="mt-8 btn btn-outline px-8">Submit another</button>
+            </div>
+        }
+        else
+        {
+            <div class="animate-[sprout-fade-in_0.5s_ease]">
+                <h1 class="text-[2.1rem] font-extrabold text-text-main leading-tight mb-3 tracking-[-0.02em]">How's your garden growing?</h1>
+                <p class="text-[1.05rem] text-text-muted mb-8">We'd love to hear your thoughts and suggestions.</p>
+
+                <EditForm Model="@feedbackModel" OnValidSubmit="HandleSubmit" class="flex flex-col gap-7">
+                    <DataAnnotationsValidator />
+
+                    <!-- Rating Section -->
+                    <div class="flex flex-col gap-4">
+                        <label class="text-[0.9rem] font-bold text-[#314236] uppercase tracking-wide">Rate your experience</label>
+                        <div class="flex gap-3 justify-start items-center bg-bg-card/50 p-4 rounded-2xl border border-border-subtle inline-flex w-fit">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                var ratingValue = i;
+                                <button type="button" 
+                                        @onclick="() => SetRating(ratingValue)"
+                                        @onmouseover="() => HoverRating(ratingValue)"
+                                        @onmouseout="ClearHover"
+                                        class="text-4xl transition-all duration-300 transform outline-none focus:outline-none drop-shadow-sm @(GetStarColor(ratingValue))">
+                                    ★
+                                </button>
+                            }
+                        </div>
+                        @if (showRatingError)
+                        {
+                            <span class="text-rose-500 text-[0.85rem] font-medium flex items-center gap-1.5 mt-1 animate-[sprout-fade-in_0.2s_ease]">
+                                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                                </svg>
+                                Please select a rating before planting.
+                            </span>
+                        }
+                    </div>
+
+                    <!-- Comment Section -->
+                    <div class="flex flex-col gap-2.5">
+                        <label for="comment" class="text-[0.9rem] font-bold text-[#314236] uppercase tracking-wide">Tell us more <span class="text-text-light font-normal normal-case tracking-normal">(optional)</span></label>
+                        <InputTextArea id="comment"
+                                       @bind-Value="feedbackModel.Comment"
+                                       placeholder="What do you love? What could improve?"
+                                       class="w-full min-h-[140px] px-5 py-4 rounded-xl bg-white border border-[#d0dbd3] text-[#111a14] text-[1rem] outline-none box-border placeholder:text-[#9aa89e] focus:border-[#2ecb72] focus:shadow-[0_0_0_4px_rgba(46,203,114,0.15)] focus:bg-white resize-y transition-all duration-200" />
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" disabled="@isSubmitting" class="btn btn-primary w-full mt-2 py-[0.9rem] text-[1.05rem] rounded-xl shadow-[0_8px_20px_-8px_rgba(45,106,79,0.5)] disabled:opacity-75 disabled:cursor-wait flex justify-center items-center gap-3 overflow-hidden relative group">
+                        <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                        @if (isSubmitting)
+                        {
+                            <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            <span class="relative z-10 font-bold">Planting...</span>
+                        }
+                        else
+                        {
+                            <span class="relative z-10 font-bold">Plant Feedback</span>
+                        }
+                    </button>
+                </EditForm>
+            </div>
+        }
+    </div>
+
+    <!-- Dynamic Submitted Reviews Display -->
+    @if (submittedReviews.Count > 0)
+    {
+        <div class="relative z-10 w-full max-w-[550px] flex flex-col gap-4 animate-[sprout-fade-in_0.5s_ease] mt-10 pb-12">
+            <div class="flex items-center justify-between px-1">
+                <h3 class="text-xl font-bold text-text-main">Submitted Reviews</h3>
+                <span class="text-xs font-semibold text-text-muted bg-white px-3 py-1 rounded-full border border-border shadow-xs">
+                    @submittedReviews.Count @(submittedReviews.Count == 1 ? "review" : "reviews")
+                </span>
+            </div>
+
+            @foreach (var review in submittedReviews)
+            {
+                <div class="bg-white/90 backdrop-blur-md border border-white shadow-[0_10px_25px_-5px_rgba(34,53,39,0.06)] rounded-2xl p-6 transition-all hover:shadow-[0_15px_30px_-5px_rgba(34,53,39,0.1)]">
+                    <div class="flex justify-between items-center mb-3">
+                        <div class="flex gap-1 text-amber-400 text-lg">
+                            @for (int i = 1; i <= 5; i++)
+                            {
+                                if (i <= review.Rating)
+                                {
+                                    <span class="drop-shadow-xs">★</span>
+                                }
+                                else
+                                {
+                                    <span class="text-gray-200">★</span>
+                                }
+                            }
+                        </div>
+                        <span class="text-xs font-medium text-text-light">@review.Date.ToString("MMM dd, yyyy h:mm tt")</span>
+                    </div>
+
+                    @if (!string.IsNullOrWhiteSpace(review.Comment))
+                    {
+                        <p class="text-[0.95rem] text-text-muted leading-relaxed break-words">"@review.Comment"</p>
+                    }
+                    else
+                    {
+                        <p class="text-[0.9rem] text-text-light italic">No comment provided.</p>
+                    }
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private FeedbackModel feedbackModel = new();
+    private bool isSubmitting = false;
+    private bool isSubmitted = false;
+    private int hoveredRating = 0;
+    private bool showRatingError = false;
+
+    // Stores reviews submitted by user in this session (starts empty, no static reviews)
+    private static readonly List<ReviewItem> submittedReviews = new();
+
+    private void SetRating(int rating)
+    {
+        feedbackModel.Rating = rating;
+        showRatingError = false;
+    }
+
+    private void HoverRating(int rating)
+    {
+        hoveredRating = rating;
+    }
+
+    private void ClearHover()
+    {
+        hoveredRating = 0;
+    }
+
+    private string GetStarColor(int rating)
+    {
+        int effectiveRating = hoveredRating > 0 ? hoveredRating : feedbackModel.Rating;
+        
+        if (rating <= effectiveRating)
+        {
+            return "text-amber-400 drop-shadow-[0_2px_10px_rgba(251,191,36,0.4)] scale-110 -translate-y-1";
+        }
+        return "text-[#e1e8df] hover:text-amber-200";
+    }
+
+    private async Task HandleSubmit()
+    {
+        if (feedbackModel.Rating == 0)
+        {
+            showRatingError = true;
+            return;
+        }
+
+        showRatingError = false;
+        isSubmitting = true;
+        
+        // Simulate brief delay for feedback animation
+        await Task.Delay(800);
+        
+        // Add new review to the top of the submitted list
+        submittedReviews.Insert(0, new ReviewItem 
+        { 
+            Rating = feedbackModel.Rating, 
+            Comment = feedbackModel.Comment, 
+            Date = DateTime.Now 
+        });
+
+        isSubmitting = false;
+        isSubmitted = true;
+    }
+
+    private void ResetForm()
+    {
+        feedbackModel = new();
+        isSubmitted = false;
+        hoveredRating = 0;
+        showRatingError = false;
+    }
+
+    public class FeedbackModel
+    {
+        public int Rating { get; set; } = 0;
+
+        [StringLength(1000, ErrorMessage = "Comment is too long.")]
+        public string Comment { get; set; } = "";
+    }
+
+    public class ReviewItem
+    {
+        public int Rating { get; set; }
+        public string Comment { get; set; } = "";
+        public DateTime Date { get; set; }
+    }
+}

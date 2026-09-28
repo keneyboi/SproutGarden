@@ -1,51 +1,60 @@
 is_global = true
 build_property.TargetFramework = net8.0
+build_property.TargetFrameworkIdentifier = .NETCoreApp
+build_property.TargetFrameworkVersion = v8.0
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
 build_property.EnforceExtendedAnalyzerRules = 
+build_property.EntryPointFilePath = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorSprout
 build_property.RootNamespace = BlazorSprout
-build_property.ProjectDir = Z:\L23Y16W40\SproutGarden-main\
+build_property.ProjectDir = /Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = Z:\L23Y16W40\SproutGarden-main
+build_property.MSBuildProjectDirectory = /Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden
 build_property._RazorSourceGeneratorDebug = 
+build_property.EffectiveAnalysisLevelStyle = 8.0
+build_property.EnableCodeStyleSeverity = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/App.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xBcHAucmF6b3I=
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/Routes.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xSb3V0ZXMucmF6b3I=
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Pages/Feedback.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9GZWVkYmFjay5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/_Imports.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xfSW1wb3J0cy5yYXpvcg==
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Pages/Home.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ib21lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/Layout/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTWFpbkxheW91dC5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-cegkadiihk
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Pages/SignIn.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TaWduSW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/Layout/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xMYXlvdXRcTmF2TWVudS5yYXpvcg==
-build_metadata.AdditionalFiles.CssScope = b-x3g46tf3ix
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Pages/SignUp.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9TaWduVXAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/Pages/Home.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xIb21lLnJhem9y
-build_metadata.AdditionalFiles.CssScope = b-aixxw685m8
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/Pages/SignIn.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWduSW4ucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-dd2e3uetzr
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9fSW1wb3J0cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
 
-[Z:/L23Y16W40/SproutGarden-main/Components/Pages/SignUp.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTaWduVXAucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-z088jvn3wd
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-6f469ado2a
+
+[/Users/prince/BSCS-3 F2/CSIT321 - Application Development/SproutGarden/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-g1pu8o6y0n
